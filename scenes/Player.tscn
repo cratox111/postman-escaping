@@ -1,15 +1,66 @@
-[gd_scene load_steps=13 format=3 uid="uid://52vohxu84rcp"]
+[gd_scene load_steps=18 format=3 uid="uid://52vohxu84rcp"]
 
-[ext_resource type="Script" path="res://scrips/player.gd" id="1_4inff"]
 [ext_resource type="Texture2D" uid="uid://dykpigb45mc2w" path="res://assets/sprites/Player/Player.png" id="1_i7pgq"]
+[ext_resource type="Texture2D" uid="uid://dxx3m03g48mr0" path="res://assets/sprites/Player/Player-jump.png" id="2_fgujx"]
 [ext_resource type="Texture2D" uid="uid://c0gu3ygscph0s" path="res://assets/sprites/Player/Player-run.png" id="3_xdy12"]
+
+[sub_resource type="GDScript" id="GDScript_e2xa0"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+
+func _ready():
+	velocity.x += SPEED
+
+func _physics_process(delta):
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+
+	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	animation()
+	move_and_slide()
+
+func animation():
+	if velocity.x > 0:
+		$AnimatedSprite2D.play(\"run\")
+	
+	if velocity.y < 0:
+		$AnimatedSprite2D.play(\"jump-impulse\")
+	elif velocity.y > 0:
+		$AnimatedSprite2D.play(\"fall-jump\")
+		
+	
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fg8l"]
 size = Vector2(15, 41)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bldo6"]
+atlas = ExtResource("2_fgujx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umpov"]
+atlas = ExtResource("2_fgujx")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ejcs"]
 atlas = ExtResource("1_i7pgq")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbmoq"]
+atlas = ExtResource("2_fgujx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vyhv"]
+atlas = ExtResource("2_fgujx")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4jxqo"]
 atlas = ExtResource("3_xdy12")
@@ -39,10 +90,32 @@ region = Rect2(320, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_bldo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umpov")
+}],
+"loop": true,
+"name": &"fall-jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4ejcs")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbmoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vyhv")
+}],
+"loop": true,
+"name": &"jump-impulse",
 "speed": 5.0
 }, {
 "frames": [{
@@ -66,11 +139,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 16.0
+"speed": 12.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_4inff")
+position = Vector2(230, 181)
+scale = Vector2(2, 2)
+script = SubResource("GDScript_e2xa0")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
@@ -79,4 +155,12 @@ shape = SubResource("RectangleShape2D_4fg8l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6kboy")
 animation = &"run"
-frame_progress = 0.256032
+frame = 1
+frame_progress = 0.00237938
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_bottom = 648
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

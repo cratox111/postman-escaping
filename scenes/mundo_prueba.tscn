@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl86viou8648a"]
+
+[ext_resource type="PackedScene" uid="uid://chgid46rj1pf0" path="res://scenes/Suelo.tscn" id="1_e58mv"]
+[ext_resource type="PackedScene" uid="uid://52vohxu84rcp" path="res://scenes/Player.tscn" id="2_ftwsf"]
+
+[node name="MundoPrueba" type="Node2D"]
+
+[node name="Node2D" parent="." instance=ExtResource("1_e58mv")]
+position = Vector2(111, 333)
+scale = Vector2(10, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_ftwsf")]
+position = Vector2(530, -508)
