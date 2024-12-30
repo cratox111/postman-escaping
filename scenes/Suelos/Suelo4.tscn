@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=4 uid="uid://bahupslr5tvtc"]
+
+[ext_resource type="Script" path="res://scrips/move_plataformas.gd" id="1_g7y4n"]
+[ext_resource type="Texture2D" uid="uid://dr4133xypn7gx" path="res://assets/sprites/Carretera.png" id="1_v8iwi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipi4m"]
+texture = ExtResource("1_v8iwi")
+texture_region_size = Vector2i(64, 64)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_nsbvy"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ipi4m")
+
+[node name="Suelo4" type="Node2D"]
+script = ExtResource("1_g7y4n")
+speed = 300
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAEAAAAAAAAAAAAAAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAIAAAD//wEAAAAAAAIAAAAAAAEAAAABAAIAAAD+/wIAAAABAAIAAAD//wIAAAABAAIAAAAAAAIAAAABAAIAAAD9/wIAAAAAAAIAAAD9/wMAAAAAAAIAAAD+/wMAAAABAAIAAAD//wMAAAABAAIAAAAAAAMAAAABAAIAAAABAAMAAAABAAIAAAABAAIAAAABAAIAAAABAAEAAAAAAAIAAAD9/wEAAAABAAEAAAD9/wQAAAABAAIAAAD+/wQAAAABAAIAAAD//wQAAAABAAIAAAAAAAQAAAABAAIAAAABAAQAAAABAAIAAAACAAMAAAAAAAIAAAACAAQAAAAAAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAABAAYAAAABAAIAAAABAAUAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAD//wYAAAABAAIAAAD+/wYAAAABAAIAAAD9/wUAAAABAAIAAAD+/wUAAAABAAIAAAD//wUAAAABAAIAAAACAAIAAAAAAAIAAAABAAAAAAAAAAEAAAD9/wYAAAABAAIAAAACAAEAAAABAAEAAAADAAMAAAAAAAIAAAADAAQAAAAAAAIAAAADAAUAAAAAAAIAAAADAAYAAAAAAAIAAAD8/wQAAAAAAAIAAAD8/wUAAAAAAAIAAAD8/wYAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_nsbvy")

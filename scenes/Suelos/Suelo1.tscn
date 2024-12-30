@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://4h6wrxmwn7bm"]
+
+[ext_resource type="Texture2D" uid="uid://dr4133xypn7gx" path="res://assets/sprites/Carretera.png" id="1_2aw0j"]
+[ext_resource type="Script" path="res://scrips/move_plataformas.gd" id="1_4oefo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sgtw4"]
+texture = ExtResource("1_2aw0j")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -32, 1.75, -32, 2, -9.125, -2, -8.875)
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_g5egt"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_sgtw4")
+
+[node name="Suelo1" type="Node2D"]
+script = ExtResource("1_4oefo")
+speed = 300
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-128, 0)
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_g5egt")
+format = 2
+layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 196607, 65536, 0, 131073, 65536, 0, 131072, 65536, 0, 131074, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0)
