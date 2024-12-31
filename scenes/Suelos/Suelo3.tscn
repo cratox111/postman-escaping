@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://dthwf28vj2up7"]
+[gd_scene load_steps=6 format=4 uid="uid://dthwf28vj2up7"]
 
 [ext_resource type="Script" path="res://scrips/move_plataformas.gd" id="1_d72it"]
 [ext_resource type="Texture2D" uid="uid://dr4133xypn7gx" path="res://assets/sprites/Carretera.png" id="1_ynmjp"]
+[ext_resource type="PackedScene" uid="uid://djwbxlsx675nl" path="res://scenes/other/moneda.tscn" id="3_mdqfv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q875g"]
 texture = ExtResource("1_ynmjp")
@@ -113,10 +114,19 @@ sources/0 = SubResource("TileSetAtlasSource_q875g")
 
 [node name="Suelo3" type="Node2D"]
 script = ExtResource("1_d72it")
-speed = 300
+speed = 400
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-64, 0)
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAD//wAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAD//wAAAAAAAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAAAAAQAAAABAAAAAAABAAQAAAABAAAAAAABAAYAAAABAAAAAAAAAAYAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAABAAAAAAABAAgAAAABAAAAAAAAAAgAAAABAAAAAAD//wgAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_w7arc")
+
+[node name="Moneda" parent="." instance=ExtResource("3_mdqfv")]
+position = Vector2(-128, -37)
+
+[node name="Moneda2" parent="." instance=ExtResource("3_mdqfv")]
+position = Vector2(0, -37)
+
+[node name="Moneda3" parent="." instance=ExtResource("3_mdqfv")]
+position = Vector2(129, -37)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://4h6wrxmwn7bm"]
+[gd_scene load_steps=6 format=3 uid="uid://4h6wrxmwn7bm"]
 
 [ext_resource type="Texture2D" uid="uid://dr4133xypn7gx" path="res://assets/sprites/Carretera.png" id="1_2aw0j"]
 [ext_resource type="Script" path="res://scrips/move_plataformas.gd" id="1_4oefo"]
+[ext_resource type="PackedScene" uid="uid://djwbxlsx675nl" path="res://scenes/other/moneda.tscn" id="3_yg0vq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sgtw4"]
 texture = ExtResource("1_2aw0j")
@@ -20,11 +21,23 @@ sources/0 = SubResource("TileSetAtlasSource_sgtw4")
 
 [node name="Suelo1" type="Node2D"]
 script = ExtResource("1_4oefo")
-speed = 300
+speed = 400
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-128, 0)
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_g5egt")
 format = 2
-layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 196607, 65536, 0, 131073, 65536, 0, 131072, 65536, 0, 131074, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0)
+layer_0/tile_data = PackedInt32Array(65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 196607, 65536, 0, 131073, 65536, 0, 131072, 65536, 0, 131074, 65536, 0, 262143, 65536, 0, 196608, 65536, 0, 196609, 65536, 0, 196610, 65536, 0, 327679, 65536, 0, 262144, 65536, 0, 262145, 65536, 0, 262146, 65536, 0, 327682, 65536, 0, 327681, 65536, 0, 327680, 65536, 0, 393215, 65536, 0, 458751, 65536, 0, 393216, 65536, 0, 393217, 65536, 0, 393218, 65536, 0, 458754, 65536, 0, 458753, 65536, 0, 458752, 65536, 0, 524287, 65536, 0, 589823, 65536, 0, 524288, 65536, 0, 524289, 65536, 0, 524290, 65536, 0, 589826, 65536, 0, 589825, 65536, 0, 589824, 65536, 0, 655359, 65536, 0)
+
+[node name="Moneda3" parent="." instance=ExtResource("3_yg0vq")]
+position = Vector2(64, -35)
+
+[node name="Moneda4" parent="." instance=ExtResource("3_yg0vq")]
+position = Vector2(192, -37)
+
+[node name="Moneda2" parent="." instance=ExtResource("3_yg0vq")]
+position = Vector2(-64, -36)
+
+[node name="Moneda" parent="." instance=ExtResource("3_yg0vq")]
+position = Vector2(-193, -35)

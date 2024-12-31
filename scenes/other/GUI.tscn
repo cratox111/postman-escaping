@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctemp2pfna8jd"]
+
+[ext_resource type="FontFile" uid="uid://dqvlk5n2tn7dy" path="res://assets/fonts/font.ttf" id="1_a63rq"]
+[ext_resource type="Script" path="res://scrips/GUI-MENU.gd" id="1_ebj0s"]
+[ext_resource type="Texture2D" uid="uid://64nomanfqp16" path="res://assets/sprites/Moneda.png" id="3_yrcua"]
+
+[node name="Gui" type="CanvasLayer"]
+script = ExtResource("1_ebj0s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Container" type="Panel" parent="."]
+self_modulate = Color(0.490258, 0.474859, 0.505616, 0.552941)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -1248.0
+offset_top = 26.0
+offset_right = -454.0
+offset_bottom = 219.0
+grow_horizontal = 2
+
+[node name="TextScore" type="Label" parent="Container"]
+layout_mode = 2
+offset_left = 59.0
+offset_top = 26.0
+offset_right = 295.0
+offset_bottom = 86.0
+theme_override_fonts/font = ExtResource("1_a63rq")
+theme_override_font_sizes/font_size = 60
+text = "SCORE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CountScore" type="Label" parent="Container/TextScore"]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 62.0
+offset_right = 207.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(0, 0.408279, 0.693182, 1)
+theme_override_fonts/font = ExtResource("1_a63rq")
+theme_override_font_sizes/font_size = 100
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="Sprite2D" parent="Container"]
+position = Vector2(453, 98)
+scale = Vector2(2.29762, 2.29762)
+texture = ExtResource("3_yrcua")
+region_enabled = true
+region_rect = Rect2(0, 0, 63.897, 63.8856)
+
+[node name="CountCoins" type="Label" parent="Container/Coins"]
+offset_left = 33.9622
+offset_top = -27.8491
+offset_right = 121.962
+offset_bottom = 32.1509
+theme_override_fonts/font = ExtResource("1_a63rq")
+theme_override_font_sizes/font_size = 40
+text = ":"
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

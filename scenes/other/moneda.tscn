@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://djwbxlsx675nl"]
+
+[ext_resource type="Texture2D" uid="uid://64nomanfqp16" path="res://assets/sprites/Moneda.png" id="1_8xf2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66y7q"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhfoj"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrahl"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp0kh"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn4gd"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uaai"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfn2k"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67yb7"]
+atlas = ExtResource("1_8xf2k")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30l1k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66y7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhfoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrahl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp0kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn4gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uaai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfn2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67yb7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_if03s"]
+radius = 30.0167
+
+[node name="Moneda" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_30l1k")
+autoplay = "default"
+frame_progress = 0.49131
+
+[node name="Moneda" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moneda"]
+shape = SubResource("CircleShape2D_if03s")

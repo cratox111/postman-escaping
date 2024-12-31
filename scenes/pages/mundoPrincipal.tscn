@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl86viou8648a"]
+
+[ext_resource type="Script" path="res://scrips/mundo_prueba.gd" id="1_880hd"]
+[ext_resource type="PackedScene" uid="uid://bc8ek2dhea8o4" path="res://scenes/other/Background.tscn" id="2_7kxsy"]
+[ext_resource type="PackedScene" uid="uid://v2oqe51tf7o" path="res://scenes/Suelos/AreaPrincipal.tscn" id="3_vcsgd"]
+[ext_resource type="PackedScene" uid="uid://52vohxu84rcp" path="res://scenes/Player.tscn" id="4_88pdj"]
+[ext_resource type="PackedScene" uid="uid://ctemp2pfna8jd" path="res://scenes/other/GUI.tscn" id="5_ojupe"]
+
+[node name="MundoPrueba" type="Node2D"]
+script = ExtResource("1_880hd")
+
+[node name="Background" parent="." instance=ExtResource("2_7kxsy")]
+
+[node name="Tierra" parent="." instance=ExtResource("3_vcsgd")]
+
+[node name="Player" parent="." instance=ExtResource("4_88pdj")]
+position = Vector2(390, 664)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Gui" parent="." instance=ExtResource("5_ojupe")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

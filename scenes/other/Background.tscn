@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc8ek2dhea8o4"]
+
+[ext_resource type="Script" path="res://scrips/background.gd" id="1_rbbb3"]
+[ext_resource type="Texture2D" uid="uid://ck2m3iwnsgs67" path="res://assets/sprites/Backgrounds/Nubes.png" id="1_ssom4"]
+[ext_resource type="Texture2D" uid="uid://drhbogai0aj1g" path="res://assets/sprites/Backgrounds/Fondo-montañas.png" id="2_jgcap"]
+[ext_resource type="Texture2D" uid="uid://bdj6pdrfi7vxl" path="res://assets/sprites/Backgrounds/Casas.png" id="4_kqok6"]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_rbbb3")
+
+[node name="ParallaxCielo" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Cielo" type="Sprite2D" parent="ParallaxCielo"]
+position = Vector2(1280, 720)
+scale = Vector2(10, 11.25)
+texture = ExtResource("1_ssom4")
+
+[node name="ParallaxMontañas" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Montaña" type="Sprite2D" parent="ParallaxMontañas"]
+position = Vector2(1280, 701)
+scale = Vector2(10, 11.5938)
+texture = ExtResource("2_jgcap")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Casas" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1280.5, 720.5)
+scale = Vector2(10.0039, 11.3203)
+texture = ExtResource("4_kqok6")

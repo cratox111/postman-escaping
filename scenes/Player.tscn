@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://52vohxu84rcp"]
+[gd_scene load_steps=17 format=3 uid="uid://52vohxu84rcp"]
 
 [ext_resource type="Script" path="res://scrips/Player.gd" id="1_5jhbl"]
 [ext_resource type="Texture2D" uid="uid://dykpigb45mc2w" path="res://assets/sprites/Player/Player.png" id="1_i7pgq"]
@@ -8,9 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fg8l"]
 size = Vector2(15, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_umpov"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kx1a"]
 atlas = ExtResource("2_fgujx")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ejcs"]
 atlas = ExtResource("1_i7pgq")
@@ -48,7 +48,7 @@ region = Rect2(320, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_umpov")
+"texture": SubResource("AtlasTexture_0kx1a")
 }],
 "loop": false,
 "name": &"fall-jump",
@@ -94,9 +94,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xgsr"]
+size = Vector2(22, 21)
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(134, 94)
-scale = Vector2(2, 2)
+position = Vector2(106, 96)
+scale = Vector2(3, 3)
 script = ExtResource("1_5jhbl")
 metadata/_edit_group_ = true
 
@@ -106,11 +109,19 @@ shape = SubResource("RectangleShape2D_4fg8l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6kboy")
-animation = &"jump-impulse"
+animation = &"fall-jump"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_top = 0
 limit_bottom = 648
 
+[node name="RecoledCoins" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecoledCoins"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_4xgsr")
+debug_color = Color(0, 0.650305, 0.100781, 0.42)
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="RecoledCoins" to="." method="_on_area_2d_area_entered"]
