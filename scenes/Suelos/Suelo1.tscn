@@ -21,7 +21,6 @@ sources/0 = SubResource("TileSetAtlasSource_sgtw4")
 
 [node name="Suelo1" type="Node2D"]
 script = ExtResource("1_4oefo")
-speed = 400
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-128, 0)

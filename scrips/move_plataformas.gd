@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed:int
+var speed = 450
 
 func _physics_process(delta):
 	position.x -= speed * delta

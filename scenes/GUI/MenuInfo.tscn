@@ -7,10 +7,6 @@
 [node name="Gui" type="CanvasLayer"]
 script = ExtResource("1_ebj0s")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
-
 [node name="Container" type="Panel" parent="."]
 self_modulate = Color(0.490258, 0.474859, 0.505616, 0.552941)
 anchors_preset = 5
@@ -63,5 +59,3 @@ theme_override_fonts/font = ExtResource("1_a63rq")
 theme_override_font_sizes/font_size = 40
 text = ":"
 vertical_alignment = 1
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,25 +5,21 @@ var Suelo1:PackedScene = preload("res://scenes/Suelos/Suelo1.tscn")
 var Suelo2:PackedScene = preload("res://scenes/Suelos/Suelo2.tscn")
 var Suelo3:PackedScene = preload("res://scenes/Suelos/Suelo3.tscn")
 var Suelo4:PackedScene = preload("res://scenes/Suelos/Suelo4.tscn")
-var menu_dead:PackedScene = preload("res://scenes/other/MenuDead.tscn")
 var time_out = false
 var posicion
 var you_lost = false
 
 func _ready():
-	$Timer.start()
+	$SpawFloor.start()
 
 func _process(delta):
 	if time_out:
 		generar_suelo()
 		time_out = false
 	
-	if $Player.global_position.x < -10 or $Player.global_position.y > 3000:
-		var new_menu_dead = menu_dead.instantiate()
-		get_parent().add_child(new_menu_dead)
+	if $Player.global_position.x < -100 or $Player.global_position.y > 2000:
+		$MenuDead.global_position = Vector2(1280, 720)
 		you_lost = true
-	
-	print($Player.global_position.y)
 
 func generar_suelo():
 	if not you_lost:
@@ -32,7 +28,14 @@ func generar_suelo():
 		var suelo_elegido = suelos[randi_range(0, suelos.size() - 1)].instantiate()
 		suelo_elegido.global_position = Vector2(2750, posicion)
 		get_parent().add_child(suelo_elegido)
-	
+		
+		suelo_elegido.speed = 450
+		
+		if $Gui.score > 300:
+			suelo_elegido.speed = 500
+		elif $Gui.score > 500:
+			suelo_elegido.speed = 550
+		print(suelo_elegido.speed)
 
 
 func _on_timer_timeout():

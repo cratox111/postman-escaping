@@ -15,9 +15,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
-	if position.x < 390:
+	if position.x < 559:
 		velocity.x = 10
-	elif position.x >= 390:
+	elif position.x >= 559:
 		velocity.x = 0
 	
 	
