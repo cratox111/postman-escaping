@@ -29,7 +29,7 @@ func animation():
 		$AnimatedSprite2D.play("jump-impulse")
 	elif velocity.y > 0:
 		$AnimatedSprite2D.play("fall-jump")
-	elif  velocity.y == 0:
+	else:
 		$AnimatedSprite2D.play("run")
 	
 

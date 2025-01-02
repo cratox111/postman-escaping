@@ -5,6 +5,8 @@ var Suelo1:PackedScene = preload("res://scenes/Suelos/Suelo1.tscn")
 var Suelo2:PackedScene = preload("res://scenes/Suelos/Suelo2.tscn")
 var Suelo3:PackedScene = preload("res://scenes/Suelos/Suelo3.tscn")
 var Suelo4:PackedScene = preload("res://scenes/Suelos/Suelo4.tscn")
+var suelos = [Suelo1, Suelo3, Suelo4]
+var suelo_elegido
 var time_out = false
 var posicion
 var you_lost = false
@@ -24,19 +26,17 @@ func _process(delta):
 func generar_suelo():
 	if not you_lost:
 		var posicion = randi_range(750, 950)
-		var suelos = [Suelo1, Suelo3, Suelo4]
-		var suelo_elegido = suelos[randi_range(0, suelos.size() - 1)].instantiate()
+		suelo_elegido = suelos[randi_range(0, suelos.size() - 1)].instantiate()
 		suelo_elegido.global_position = Vector2(2750, posicion)
 		get_parent().add_child(suelo_elegido)
-		
-		suelo_elegido.speed = 450
 		
 		if $Gui.score > 300:
 			suelo_elegido.speed = 500
 		elif $Gui.score > 500:
 			suelo_elegido.speed = 550
-		print(suelo_elegido.speed)
-
+		else:
+			suelo_elegido.speed = 450
+			
 
 func _on_timer_timeout():
 	time_out = true
